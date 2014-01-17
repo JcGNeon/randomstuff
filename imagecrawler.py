@@ -10,12 +10,12 @@ def openUrl():
     try:
         result = urllib2.urlopen('http://reddit.com/', data = None)
         soup = BeautifulSoup(result)
-        getUrl(soup)
+        getImage(soup)
     except Exception, e:
         print e
         exit(1)
 
-def getUrl(soup):
+def getImage(soup):
     for link in soup.find_all('a'):
         new_result = link.get('href')
         someMatch = re.search(r'.jpg|png', str(new_result))
