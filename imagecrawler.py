@@ -1,4 +1,5 @@
 __author__ = 'neon'
+__UserAgent__ = 'Image Downloader Bot by JcGNeon'
 from bs4 import BeautifulSoup
 from sys import exit
 import urllib
@@ -9,6 +10,7 @@ import os
 def openUrl():
     try:
         result = urllib2.urlopen('http://reddit.com/', data = None)
+        print result.read()
         soup = BeautifulSoup(result)
         getImage(soup)
     except Exception, e:
