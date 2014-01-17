@@ -10,7 +10,6 @@ import os
 def openUrl():
     try:
         result = urllib2.urlopen('http://reddit.com/', data = None)
-        print result.read()
         soup = BeautifulSoup(result)
         getImage(soup)
     except Exception, e:
