@@ -8,7 +8,7 @@ import re
 import os
 
 def welcome():
-    print 'Welcome to Image Downloader Bot. To browse Reddit\'s front page simply leave the subreddit request blank.'
+    print 'Welcome to Image Downloader Bot. To browse Reddit\'s front page simply leave the subreddit request blank.\n'
 
 def openUrl():
 
@@ -28,6 +28,7 @@ def getImage(soup):
         someMatch = re.search(r'.jpg|png|gif', str(new_result))
         if(someMatch != None):
             print new_result
+            print '\n'
             url = str(new_result).split('/')[-1]
             try:
                 if os.path.isfile(url):
