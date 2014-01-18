@@ -8,7 +8,7 @@ import re
 import os
 
 def welcome():
-    print 'Welcome to Image Downloader Bot. To browser Reddit\'s front page simply leave the subreddit request blank.'
+    print 'Welcome to Image Downloader Bot. To browse Reddit\'s front page simply leave the subreddit request blank.'
 
 def openUrl():
 
