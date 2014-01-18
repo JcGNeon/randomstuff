@@ -1,5 +1,7 @@
+# Known Issues: can't browse NSFW subreddits due to getting stuck on the 'Are you 18?' page.
+
 __author__ = 'neon'
-__UserAgent__ = 'Image Downloader Bot by SirNeon'
+__UserAgent__ = 'Image Downloader Bot by JcGNeon'
 from bs4 import BeautifulSoup
 from sys import exit
 import urllib
