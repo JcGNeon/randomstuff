@@ -25,7 +25,7 @@ def openUrl():
 def getImage(soup):
     for link in soup.find_all('a'):
         new_result = link.get('href')
-        someMatch = re.search(r'.jpg|.png|.gif', str(new_result)) # check for links with image extensions
+        someMatch = re.search(r'\.jpg|\.png|\.gif', str(new_result)) # check for links with image extensions
         if(someMatch != None):
             print new_result
             print '\n'
