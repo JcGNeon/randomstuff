@@ -30,8 +30,7 @@ def get_image(soup):
         new_result = link.get('href')
         some_match = re.search(r'\.jpg|\.png|\.gif', str(new_result))  # check for links with image extensions
         if some_match is not None:
-            print new_result
-            print '\n'
+            print str(new_result) + '\n'
             url = str(new_result).split('/')[-1]  # get the filename from the image url
             try:
                 if os.path.isfile(url):
