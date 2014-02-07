@@ -10,12 +10,12 @@ import re
 import os
 
 def welcome():
-    print 'Welcome to Image Downloader Bot. To browse Reddit\'s front page simply leave the subreddit request blank.\n'
+    print "Welcome to Image Downloader Bot. To browse Reddit's front page simply leave the subreddit request blank.\n"
 
 def openUrl():
     userSubreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
     try:
-        result = urllib2.urlopen('http://reddit.com' + userSubreddit + '/?count=' + str(25), data = None)
+        result = urllib2.urlopen('http://reddit.com' + userSubreddit + '/?count=' + str(25), data=None)
         soup = BeautifulSoup(result) # scan through the result
         getImage(soup)
     except Exception, e:
@@ -34,7 +34,7 @@ def getImage(soup):
                 if os.path.isfile(url):
                     pass
                 else:
-                    urllib.urlretrieve(new_result, filename = url, reporthook = None, data = None) # download the image
+                    urllib.urlretrieve(new_result, filename=url, reporthook=None, data=None) # download the image
             except Exception, e:
                 print e
 
