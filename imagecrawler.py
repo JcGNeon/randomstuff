@@ -9,37 +9,41 @@ import urllib2
 import re
 import os
 
+
 def welcome():
     print "Welcome to Image Downloader Bot. To browse Reddit's front page simply leave the subreddit request blank.\n"
 
-def openUrl():
-    userSubreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
+
+def open_url():
+    user_subreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
     try:
-        result = urllib2.urlopen('http://reddit.com' + userSubreddit + '/?count=' + str(25), data=None)
-        soup = BeautifulSoup(result) # scan through the result
-        getImage(soup)
+        result = urllib2.urlopen('http://reddit.com' + user_subreddit + '/?count=' + str(25), data=None)
+        soup = BeautifulSoup(result)  # scan through the result
+        get_image(soup)
     except Exception, e:
         print e
         exit(1)
 
-def getImage(soup):
+
+def get_image(soup):
     for link in soup.find_all('a'):
         new_result = link.get('href')
-        someMatch = re.search(r'\.jpg|\.png|\.gif', str(new_result)) # check for links with image extensions
-        if(someMatch != None):
+        some_match = re.search(r'\.jpg|\.png|\.gif', str(new_result))  # check for links with image extensions
+        if some_match is not None:
             print new_result
             print '\n'
-            url = str(new_result).split('/')[-1] # get the filename from the image url
+            url = str(new_result).split('/')[-1]  # get the filename from the image url
             try:
                 if os.path.isfile(url):
                     pass
                 else:
-                    urllib.urlretrieve(new_result, filename=url, reporthook=None, data=None) # download the image
+                    urllib.urlretrieve(new_result, filename=url, reporthook=None, data=None)  # download the image
             except Exception, e:
                 print e
 
+
 def main():
-    openUrl()
+    open_url()
     print 'Done.'
     exit(0)
 
