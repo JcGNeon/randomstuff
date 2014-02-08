@@ -2,12 +2,11 @@
 
 __author__ = 'neon'
 __UserAgent__ = 'Image Downloader Bot by JcGNeon'
-from bs4 import BeautifulSoup
 from sys import exit
-import urllib
-import urllib2
-import re
 import os
+import re
+import urllib
+from bs4 import BeautifulSoup
 
 
 def welcome():
@@ -17,7 +16,7 @@ def welcome():
 def open_url():
     user_subreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
     try:
-        result = urllib2.urlopen('http://reddit.com' + user_subreddit + '/?count=' + str(25), data=None)
+        result = urllib2.urlopen('http://reddit.com' + user_subreddit + '/?count=25', data=None)
         soup = BeautifulSoup(result)  # scan through the result
         get_image(soup)
     except Exception, e:
