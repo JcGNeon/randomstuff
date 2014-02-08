@@ -16,7 +16,7 @@ def welcome():
 def open_url():
     user_subreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
     try:
-        result = urllib2.urlopen('http://reddit.com' + user_subreddit + '/?count=25', data=None)
+        result = urllib.urlopen('http://reddit.com' + user_subreddit + '/?count=25', data=None)
         soup = BeautifulSoup(result)  # scan through the result
         get_image(soup)
     except Exception, e:
