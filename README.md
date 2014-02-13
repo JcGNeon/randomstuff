@@ -5,3 +5,5 @@ time. Currently this is for Python programs.
 Modules used so far:
 
 BeautifulSoup4 - https://pypi.python.org/pypi/beautifulsoup4/4.3.2
+
+Mechanize - https://pypi.python.org/pypi/mechanize/
