@@ -1,12 +1,12 @@
-# Known Issues: can't browse NSFW subreddits due to getting stuck on the 'Are you 18?' page.
-
 __author__ = 'neon'
 __UserAgent__ = 'Image Downloader Bot by JcGNeon'
+
 from sys import exit
 import os
 import re
 import urllib
 from bs4 import BeautifulSoup
+import mechanize
 
 
 def welcome():
@@ -16,9 +16,18 @@ def welcome():
 def open_url():
     user_subreddit = raw_input('Enter the Subreddit You Wish to Scrape(e.g. /r/aww): ')
     try:
-        result = urllib.urlopen('http://reddit.com' + user_subreddit + '/?count=25', data=None)
-        soup = BeautifulSoup(result)  # scan through the result
-        get_image(soup)
+        br = mechanize.Browser()
+        response = br.open('http://reddit.com' + user_subreddit)
+
+        # in case the subreddit is NSFW
+        if re.search(r'[<title>reddit\.com: over 18\?</title>]', response.read()) is not None:
+            br.select_form(nr=2)
+            result = br.submit()
+            soup = BeautifulSoup(result)
+            get_image(soup)
+        else:
+            soup = BeautifulSoup(response.read())  # scan through the result
+            get_image(soup)
     except Exception, e:
         print e
         exit(1)
