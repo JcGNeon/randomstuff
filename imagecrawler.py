@@ -21,8 +21,12 @@ def open_url():
 
         # in case the subreddit is NSFW
         if re.search(r'[<title>reddit\.com: over 18\?</title>]', response.read()) is not None:
+            
+            # select the yes button and submit it
             br.select_form(nr=2)
             result = br.submit()
+            
+            # scan the page
             soup = BeautifulSoup(result)
             get_image(soup)
         else:
